@@ -7,7 +7,7 @@ import { FirebaseContext } from "../context/firebase/firebaseContext"
 
 export const Home = () => {
     // const notes = new Array (3).fill('').map((_, i) => ({id: i, title: `Note ${i+1}`}))
-    const { loading, notes, fetchNotes } = useContext(FirebaseContext)
+    const { loading, notes, fetchNotes, removeNote } = useContext(FirebaseContext)
 
     useEffect(() => {fetchNotes()}, [])
 
@@ -18,7 +18,7 @@ export const Home = () => {
 
             {loading 
             ? <Loader/>
-            : <Notes notes={notes} />
+            : <Notes notes={notes} onRemove={removeNote} />
             }
 
             
